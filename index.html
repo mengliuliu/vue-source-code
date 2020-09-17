@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{person.name}} -- {{person.age}}</h2>
+        <h3>爱好：{{person.fav}}</h3>
+        <div>{{msg}}</div>
+        <div v-text='msg'></div>
+        <div v-text='person.name'></div>
+        <div v-html='htmlStr'></div>
+        <input type="text" v-model="msg">
+        <p><a v-bind:href="'https://www.bilibili.com'">v-bind绑定的href属性</a></p>
+        <button v-on:click="handleClick">v-on:click</button>
+        <button @click="handleClick">@click</button>
+    </div>
+
+    <script src="./myVue.js"></script>
+    <!-- <script src="./vue.js"></script> -->
+    <script>
+        var vm = new MyVue({
+            el: "#app",
+            data: {
+                person: {
+                    name: '孟刘',
+                    age: 22,
+                    fav: 'basketball'
+                },
+                msg: 'msg的内容',
+                htmlStr: '<h3>这是v-html</h3>'
+            },
+            methods: {
+                handleClick: function () {
+                    console.log('这是一个处理点击事件的方法');
+                    console.log(this)
+                    // this.person.name = 'mengliu'
+                }
+            }
+        })
+        console.log(vm)
+    </script>
+
+</body>
+
+</html>
